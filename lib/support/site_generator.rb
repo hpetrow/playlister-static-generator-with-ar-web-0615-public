@@ -44,6 +44,7 @@ class SiteGenerator
     html = File.read("app/views/artists/show.html.erb")
     template = ERB.new(html)
     Artist.all.each {|artist|
+      @artist = artist
       result = template.result(binding)
       File.write("#{self.rendered_path}/artists/#{artist.to_slug}.html", result)
     }
@@ -62,6 +63,7 @@ class SiteGenerator
     html = File.read("app/views/genres/show.html.erb")
     template = ERB.new(html)
     Genre.all.each {|genre|
+      @genre = genre
       result = template.result(binding)
       File.write("#{self.rendered_path}/genres/#{genre.to_slug}.html", result)
     }
