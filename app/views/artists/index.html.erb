@@ -7,12 +7,11 @@
 
   <body>
     <ul>
-
-      <li>
-        <% @movies.each do |movie| %>
-          <li><a href="<%= movie.url %>"><%= movie.title %></a></li>
-        <% end %>
-      </li>
+      <% Artist.all.each do |artist| %>
+        <li><a href = <%= "#{artist.to_slug}" %>>
+          <%= artist.name %>
+        </a></li>
+      <% end %>
     </ul>
   </body>
 </html>

@@ -20,8 +20,44 @@ class SiteGenerator
   end
 
   def build_artists_index
+    reset_dir("#{self.rendered_path}/artists/")
     html = File.read("app/views/artists/index.html.erb")
     template = ERB.new(html)
     File.write("#{self.rendered_path}/artists/index.html", template.result)
   end
+
+  def build_songs_index
+    reset_dir("#{self.rendered_path}/songs/")
+    html = File.read("app/views/songs/index.html.erb")
+    template = ERB.new(html)
+    File.write("#{self.rendered_path}/songs/index.html", template.result)
+  end
+
+  def build_genres_index
+    reset_dir("#{self.rendered_path}/genres/")
+    html = File.read("app/views/genres/index.html.erb")
+    template = ERB.new(html)
+    File.write("#{self.rendered_path}/genres/index.html", template.result)
+  end
+
+  def build_artist_page
+    html = File.read("app/views/artists/show.html.erb")
+    template = ERB.new(html)
+    Artist.all.each {|artist|
+      result = template.result(binding)
+      File.write("#{self.rendered_path}/artists/#{artist.to_slug}.html", result)
+    }
+  end
+
+  # def generate_pages!
+  #   FileUtils.rm_rf('_site/movies')
+  #   FileUtils.mkdir_p('_site/movies')
+  #   html = File.read("lib/templates/movie.html.erb")
+  #   template = ERB.new(html)
+  #   @movies = Movie.all
+  #   @movies.each {|movie|
+  #     result = template.result(binding)
+  #     File.write("_site/movies/#{movie.url}", result)
+  #   }
+  # end
 end
