@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Artists</title>
+  </head>
+
+  <body>
+    <ul>
+
+      <li>
+        <% @movies.each do |movie| %>
+          <li><a href="<%= movie.url %>"><%= movie.title %></a></li>
+        <% end %>
+      </li>
+    </ul>
+  </body>
+</html>

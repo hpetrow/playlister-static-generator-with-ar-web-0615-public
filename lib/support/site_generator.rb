@@ -19,4 +19,9 @@ class SiteGenerator
     File.write("#{self.rendered_path}/index.html", template.result)
   end
 
+  def build_artists_index
+    html = File.read("app/views/artists/index.html.erb")
+    template = ERB.new(html)
+    File.write("#{self.rendered_path}/artists/index.html", template.result)
+  end
 end

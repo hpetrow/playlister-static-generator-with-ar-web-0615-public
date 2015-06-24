@@ -11,7 +11,8 @@
       <% Dir.foreach('app/models/') do |file| %>
         <% next if !file.include?('.rb') %>
         <% filename_normalized = file.gsub('.rb', '') %>
-        <% FileUtils.mkdir_p('_site/filname_normalized') %>
+        <% FileUtils.rm_rf("_site/#{filename_normalized}s") %>
+        <% FileUtils.mkdir_p("_site/#{filename_normalized}s") %>
         <li>
           <a href = <%= "_site/#{filename_normalized}s/index.html" %> >
             <%= "#{filename_normalized.capitalize}s - #{filename_normalized.capitalize.constantize.all.count}" %>
