@@ -49,15 +49,21 @@ class SiteGenerator
     }
   end
 
-  # def generate_pages!
-  #   FileUtils.rm_rf('_site/movies')
-  #   FileUtils.mkdir_p('_site/movies')
-  #   html = File.read("lib/templates/movie.html.erb")
-  #   template = ERB.new(html)
-  #   @movies = Movie.all
-  #   @movies.each {|movie|
-  #     result = template.result(binding)
-  #     File.write("_site/movies/#{movie.url}", result)
-  #   }
-  # end
+  def build_song_page
+    html = File.read("app/views/songs/show.html.erb")
+    template = ERB.new(html)
+    Song.all.each {|song|
+      result = template.result(binding)
+      File.write("#{self.rendered_path}/songs/#{song.to_slug}.html", result)
+    }
+  end
+
+  def build_genre_page
+    html = File.read("app/views/genres/show.html.erb")
+    template = ERB.new(html)
+    Genre.all.each {|genre|
+      result = template.result(binding)
+      File.write("#{self.rendered_path}/genres/#{genre.to_slug}.html", result)
+    }
+  end
 end

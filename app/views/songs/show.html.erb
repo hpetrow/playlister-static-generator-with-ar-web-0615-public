@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title><%= song.name %></title>
+  </head>
+
+  <body>
+    <ul>
+      <li><a href = <%= "#{song.artist.name}" %>>
+          <%= "#{song.artist.name}" %>
+      </a></li>
+    </ul>
+    <ul>
+      <li><a href = <%= "#{song.genre.name}" %>>
+        <%= "#{song.genre.name}" %>
+      </a></li>
+    </ul>
+  </body>
+</html>

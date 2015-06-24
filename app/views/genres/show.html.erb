@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title><%= genre.name %></title>
+  </head>
+
+  <body>
+    <ul>
+      <% genre.artists.each do |artist| %>
+        <li><a href = <%= "#{artist}" %>>
+          <%= artist.name %>
+        </a></li>
+      <% end %>
+    </ul>
+    <ul>
+      <% genre.songs.each do |song| %>
+        <li><a href = <%= "#{song}" %>>
+          <%= song.name %>
+        </a></li>
+      <% end %>
+    </ul>
+  </body>
+</html>
