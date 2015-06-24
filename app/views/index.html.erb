@@ -1,1 +1,23 @@
 <!-- The main page of playlister -->
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Playlister</title>
+  </head>
+
+  <body>
+    <ul>
+      <% Dir.foreach('app/models/') do |file| %>
+        <% next if !file.include?('.rb') %>
+        <% filename_normalized = file.gsub('.rb', '') %>
+        <% FileUtils.mkdir_p('_site/filname_normalized') %>
+        <li>
+          <a href = <%= "_site/#{filename_normalized}s/index.html" %> >
+            <%= "#{filename_normalized.capitalize}s - #{filename_normalized.capitalize.constantize.all.count}" %>
+          </a>
+        </li>
+      <% end %>
+    </ul>
+  </body>
+</html>

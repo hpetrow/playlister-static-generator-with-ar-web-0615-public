@@ -13,3 +13,8 @@ DB = ActiveRecord::Base.connection
 if ENV["PLAYLISTER_ENV"] == "test"
   ActiveRecord::Migration.verbose = false
 end
+
+require_relative '../app/models/concerns/slugifiable.rb'
+require_relative '../app/models/artist.rb'
+require_relative '../app/models/genre.rb'
+require_relative '../app/models/song.rb'
